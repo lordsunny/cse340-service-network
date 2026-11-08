@@ -1,0 +1,34 @@
+<%- include('partials/header') %>
+
+<main class="container page-content">
+  <section class="page-intro">
+    <p class="eyebrow">Community partners</p>
+    <h1><%= title %></h1>
+    <p>Meet organizations that represent different ways to strengthen and support our communities.</p>
+  </section>
+
+  <section class="organization-list" aria-label="Partner organizations">
+    <% if (organizations.length) { %>
+      <% organizations.forEach((organization) => { %>
+        <article class="organization-card">
+          <% if (organization.organization_name === 'BrightFuture Builders') { %>
+            <img src="/images/brightfuture-logo.png" alt="BrightFuture Builders logo">
+          <% } else if (organization.organization_name === 'GreenHarvest Growers') { %>
+            <img src="/images/greenharvest-logo.png" alt="GreenHarvest Growers logo">
+          <% } else if (organization.organization_name === 'UnityServe Volunteers') { %>
+            <img src="/images/unityserve-logo.png" alt="UnityServe Volunteers logo">
+          <% } %>
+          <div>
+            <h2><%= organization.organization_name %></h2>
+            <p><%= organization.description %></p>
+            <a href="mailto:<%= organization.email %>"><%= organization.email %></a>
+          </div>
+        </article>
+      <% }); %>
+    <% } else { %>
+      <p>No organizations are currently available.</p>
+    <% } %>
+  </section>
+</main>
+
+<%- include('partials/footer') %>

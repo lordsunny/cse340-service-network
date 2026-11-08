@@ -1,0 +1,28 @@
+<%- include('partials/header') %>
+
+<main class="container page-content">
+  <section class="page-intro">
+    <p class="eyebrow">Explore causes</p>
+    <h1><%= title %></h1>
+    <p>Choose an area of service that interests you. Each category offers a different way to contribute.</p>
+  </section>
+
+  <section class="card-grid">
+    <% if (categories.length) { %>
+      <% categories.forEach((category) => { %>
+        <article class="info-card category-card">
+          <span class="category-symbol" aria-hidden="true">♡</span>
+          <h2><%= category.category_name %></h2>
+          <p><%= category.description %></p>
+          <p class="project-meta">
+            <strong>Associated projects:</strong> <%= category.project_count %>
+          </p>
+        </article>
+      <% }); %>
+    <% } else { %>
+      <p>No service categories are currently available.</p>
+    <% } %>
+  </section>
+</main>
+
+<%- include('partials/footer') %>
